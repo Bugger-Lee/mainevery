@@ -1,0 +1,52 @@
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>从线条开始</title>
+  </head>
+
+  <body>
+    <div id="canvas-warp">
+      <canvas
+        id="canvas"
+        style="border: 1px solid #aaaaaa; display: block; margin: 50px auto;"
+      >
+        你的浏览器居然不支持Canvas？！赶快换一个吧！！
+      </canvas>
+    </div>
+    <script>
+      window.onload = function() {
+        var canvas = document.getElementById('canvas')
+        canvas.width = 800
+        canvas.height = 800
+        var context = canvas.getContext('2d')
+
+        context.beginPath()
+        context.moveTo(100, 100)
+        context.lineTo(600, 600)
+        context.lineTo(100, 600)
+        context.lineTo(100, 100)
+        context.lineWidth = 5
+        context.strokeStyle = '#AA394C'
+        context.stroke()
+
+        context.beginPath()
+        context.moveTo(200, 300)
+        context.lineTo(500, 500)
+        context.lineTo(200, 500)
+        context.lineTo(200, 300)
+        context.lineWidth = 5
+        context.strokeStyle = '#ff0000'
+        context.stroke()
+
+        context.beginPath()
+        context.moveTo(300, 400)
+        context.lineTo(400, 400)
+        context.lineTo(300, 300)
+        context.lineTo(300, 400)
+        context.lineWidth = 5
+        context.strokeStyle = '#000000'
+        context.stroke()
+      }
+    </script>
+  </body>
+</html>
