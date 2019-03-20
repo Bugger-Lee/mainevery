@@ -13,9 +13,19 @@ module.exports = {
         test: /\.css$/,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
+            loader: MiniCssExtractPlugin.loader
           },
           'css-loader'
+        ]
+      },
+      {
+        test: /\.styl$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'stylus-loader'
         ]
       }
     ]
