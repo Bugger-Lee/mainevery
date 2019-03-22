@@ -26,11 +26,24 @@ const config = {
       },
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader']
+        use: [
+          // 'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader'
+        ]
       },
       {
         test: /\.less$/,
-        use: ['style-loader', 'css-loader','less-loader']
+        use: [
+          // 'style-loader',
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'less-loader'
+        ]
       },
       {
         test: '/.styl/',
@@ -64,10 +77,25 @@ const config = {
       }
     }),
     new MiniCssExtractPlugin({
-      filename: `[name].css`
+      filename: `[name].[hash:8].css`
     }),
     new HtmlWebpackPlugin()
-  ]
+  ],
+  optimization: {
+    splitChunks: {
+      chunks: 'initial',
+      automaticNameDelimiter: '.',
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          priority: 1
+        }
+      }
+    },
+    runtimeChunk: {
+      name: entrypoint => `manifest.${entrypoint.name}`
+    }
+  }
 }
 
 if (isDev) {

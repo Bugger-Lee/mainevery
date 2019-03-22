@@ -1,7 +1,7 @@
 <template>
   <div :class="['todo-item', todo.completed ? 'completed': '']">
     <input 
-      type="checkout"
+      type="checkbox"
       class="toggle"
       v-model="todo.completed"
     >
@@ -63,13 +63,17 @@ export default {
     margin: auto 0;
     border: none;
     appearance: none;
-    outline none
-    &:after{
-        content: url('../assets/image/img.png');
-    }
-    &:checked:after{
-        content: url('../assets/image/img.png');
-    }
+    outline: none;
+    // &:after{
+    //     content: url('../assets/image/img.png');
+    //     width: 100%;
+    //     height: 100%;
+    // }
+    // &:checked:after{
+    //     content: url('../assets/image/img.png');
+    //     width: 100%;
+    //     height: 100%;
+    // }
 }
 .destory{
     position: absolute;
