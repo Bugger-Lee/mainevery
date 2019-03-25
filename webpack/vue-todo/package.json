@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --config webpack.config.js"
+    "build:client": "cross-env NODE_ENV=production webpack --config build/webpack.config.base.js",
+    "dev": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.base.js",
+    "clean": "rimraf dist",
+    "build": "npm run clean && npm run build:client"
   },
   "author": "",
   "license": "ISC",
@@ -38,6 +40,7 @@
     "webpack-dev-server": "^3.2.1"
   },
   "devDependencies": {
+    "rimraf": "^2.6.3",
     "webpack-cli": "^3.3.0"
   }
 }
