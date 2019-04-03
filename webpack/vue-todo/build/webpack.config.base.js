@@ -105,6 +105,9 @@ if (isDev) {
     overlay: {
       errors: true
     },
+    historyApiFallback: {
+      index: '/index.html'
+    },
     hot: true
   }),
     (webpack.devTool = '#cheap-module-eval-source-map'),
