@@ -7,8 +7,24 @@ export default [
     redirect: '/app'
   },
   {
+    // path: '/app/:id',
+    // props:true,
     path: '/app',
-    component: Todo
+    meta: {
+      ifHeader: true
+    },
+    beforeEnter: (to, from, next) => {
+      console.log(' before enter');
+      next()      
+    },
+    component: Todo,
+    name: 'app',
+    // children: [
+    //   {
+    //     path: 'test',
+    //     component: Login
+    //   }
+    // ]
   },
   {
     path: '/login',

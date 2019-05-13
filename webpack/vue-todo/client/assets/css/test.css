@@ -1,4 +1,6 @@
-body {
-  color: red;
-  background-image: url('../image/bg.png')
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
 }
