@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Page Title</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    .item {
+      height: 180px;
+      width: 180px;
+      border: 1px solid blue;
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <div id="diagramContainer">
+    <div id="item_left" class="item"></div>
+    <div id="item_right" class="item" style="margin-left:550px;"></div>
+  </div>
+<script src="https://cdn.bootcss.com/jsPlumb/2.6.8/js/jsplumb.min.js"></script>
+<script>
+  jsPlumb.ready(function () {
+    jsPlumb.connect({
+      anchors: ['Right','Left'],//描点位置
+      source: 'item_left',
+      target: 'item_right',
+      endpoint: ['Dot',{
+        radius: '3',
+      }],
+      paintStyle: {   //线的样式属性
+        stroke: "#333333",
+        strokeWidth: 3,
+        lineWidth: 10,//线的宽度属性
+        dashstyle: "1 1",       // 虚线  分段显示4是每段长度 1是段与段之间的长度
+      },
+      connector: ['Straight',{
+        margin: 2
+      }],
+      elementsDraggable: false,
+      overlays: [ 
+        ["Arrow", { width: 10, length: 10, location: .5, id: "arrow" }],
+       ["Label", { label: "", id: "label" }] 
+      ], // 箭头
+      ConnectionsDetachable: false, //禁止拖动
+    })
+  })
+</script>
+</body>
+</html>
