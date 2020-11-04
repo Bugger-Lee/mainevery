@@ -8,6 +8,14 @@ const path = require('path')
 const hostname = '127.0.0.1'
 const port = 3000
 
+const context = {
+  title: 'vue ssr',
+  metas: `
+      <meta name="keyword" content="vue,ssr">
+      <meta name="description" content="vue srr demo">
+  `,
+};
+
 server.get('*', (req, res) => {
   const app = new Vue({
     data: {
@@ -18,7 +26,8 @@ server.get('*', (req, res) => {
   const renderer = require('vue-server-renderer').createRenderer({
     template: fs.readFileSync(path.join(__dirname, './index.template.html'), 'utf-8')
   })
-  renderer.renderToString(app, (err, html) => {
+  renderer.renderToString(app, context, (err, html) => {
+    // console.log(html)
     if (err) {
       res.status(500).end('Error')
       return
