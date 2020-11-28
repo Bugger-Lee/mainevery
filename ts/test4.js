@@ -57,3 +57,38 @@ function addNumber() {
     }
 }
 addNumber(1, 2, 3, 4, 5, 6, 7, 8);
+// 匿名函数 带参匿名函数 自调用
+var msgs = function () {
+    return '匿名函数';
+};
+console.log(msgs());
+var msgs2 = function (s, t) {
+    return s + t;
+};
+console.log(msgs2(6, 8));
+(function () {
+    var x = '自调用';
+    console.log(x);
+})();
+// 构造函数
+var myFun = new Function('a', 'b', 'return a + b');
+var a1 = myFun(5, 8);
+console.log(a1);
+// 递归函数
+function factorial(num) {
+    if (num <= 0) {
+        return 1;
+    }
+    else {
+        return (num * factorial(num - 1));
+    }
+}
+console.log(factorial(5));
+// lambda函数 箭头函数
+var adds = function (x) { return x + 100; };
+console.log(adds(505));
+function disp(x) {
+    return x + 100;
+}
+console.log(disp(100));
+console.log(disp('100'));
