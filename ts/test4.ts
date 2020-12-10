@@ -28,7 +28,7 @@ function change(x1: number, y1: number = 5) {
 }
 console.log(change(8))
 
-function change1(x1: number, y1?: number) {
+function change1(x1: number, y1?: number, y2?: string) {
   if (y1) {
     return x1 + y1
   } else {

@@ -22,14 +22,22 @@ console.log(getNews.name, getNews.age, getNews.isSay())
 
 // 联合类型 接口
 interface Love {
-  sex: string|number
+  readonly id: number,
+  sex: string|number,
+  num?: number,
+  [propName: string]: any
 }
 
 var haha:Love = {
-  sex: 'boy'
+  id: 15,
+  sex: 'boy',
+  num: 28,
+  safe: '我是任意属性',
+  fssf: '我也是任意属性'
 }
 console.log(haha.sex)
 var haha:Love = {
+  id: 16,
   sex: 666
 }
 console.log(haha.sex)
