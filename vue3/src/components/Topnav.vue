@@ -46,8 +46,6 @@ export default {
       margin: 0 1em;
     }
   }
-  > .toggleMenu {
-  }
   > .toggleAside {
     display: none;
     width: 24px;

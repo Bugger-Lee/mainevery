@@ -90,3 +90,92 @@ car.log()
 console.log(car.name)
 
 // 类的继承
+class Animal {
+  move(dis:number = 0) {
+    console.log('这是move函数'+ dis)
+  }
+}
+
+class Dog extends Animal {
+  bark() {
+    console.log('这是bark函数')
+  }
+}
+
+var dog = new Dog()
+
+dog.move()
+dog.bark()
+dog.move(62)
+
+// 多重继承
+
+class Animals {
+  name: string
+  age: number
+  constructor(theName: string, ages: number) {
+    this.name = theName
+    this.age = ages
+  }
+  move(dis:number = 0) {
+    console.log(`${this.name}爬了${dis}m`)
+  }
+  zou(diss:string) {
+    console.log(diss)
+  }
+}
+
+class Snake extends Animals {
+  constructor(name: string) {
+    super(name, 20)
+  }
+  move(dis = 5) {
+    console.log('Snake~~~')
+    super.move(dis)
+  }
+}
+
+class Horse extends Animals {
+  constructor(name:string) {
+    super(name, 15)
+  }
+  move(dis = 45) {
+    console.log('Horse')
+    super.move(dis)
+  }
+}
+
+var ssm = new Snake('gogo')
+var hhr:Animals = new Horse('haha')
+
+ssm.move()
+ssm.move(50)
+hhr.move()
+hhr.move(32)
+
+// 修饰符
+class Pub {
+  public name: string
+  private age: number
+  protected big: string
+  constructor(names:string, ages:number, bigs: string) {
+    this.name = names
+    this.age = ages
+    this.big = bigs
+  }
+}
+
+class Pol extends Pub {
+  private new:string
+  constructor(names:string, ages:number, bigs: string, news: string) {
+    super(names,ages,bigs)
+    this.new = news
+  }
+}
+
+new Pub('li', 5, 'd')
+var sdd = new Pol('li', 5, 'd', '111')
+sdd.name
+
+// 存取器 get set
+

@@ -1,6 +1,7 @@
+import './lib/glablmoon.scss'
+import './index.scss'
 import { createApp } from 'vue'
 import App from './App.vue'
-import './index.scss'
 import router from './route/index'
 
 
