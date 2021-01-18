@@ -23,3 +23,13 @@ function addDuck(xx, yy) {
     return { x: a, y: b };
 }
 addDuck({ x: 5, y: '5' }, { x: 3, y: '8' });
+// 命名空间
+function created(c) {
+    return new c();
+}
+var aaa = /** @class */ (function () {
+    function aaa() {
+    }
+    return aaa;
+}());
+console.log(typeof created(aaa).name, created(aaa).name);

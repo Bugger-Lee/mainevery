@@ -34,3 +34,11 @@ function addDuck(xx:Duck, yy:Duck):Duck {
 addDuck({x: 5, y: '5'}, {x: 3, y: '8'})
 
 // 命名空间
+
+function created<T>(c: { new () : T }): T {
+  return new c()
+}
+class aaa {
+  name: string | undefined
+}
+console.log(typeof created(aaa).name, created(aaa).name)

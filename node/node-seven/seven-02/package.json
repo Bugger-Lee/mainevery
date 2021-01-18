@@ -1,0 +1,8 @@
+{
+  "name": "seven-02",
+  "version": "1.0.0",
+  "main": "./lib/seven-02.js",
+  "dependencies": {
+    "node-echo": "0.1.1"
+  }
+}

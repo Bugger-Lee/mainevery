@@ -2,8 +2,11 @@
   <div class="topnavAndBanner">
     <Topnav />
     <div class="banner">
-      <h1>Live UI</h1>
-      <h2>一个从零开始的 UI 框架</h2>
+      <div>
+        <img src="../assets/moon.png" alt="">
+      </div>
+      <h1>Moon UI</h1>
+      <h2>基于Vue3.0的移动端组件库</h2>
       <p class="actions">
         <a href="http://github.com">Github</a>
         <router-link to="/doc">开始</router-link>
@@ -111,6 +114,7 @@ $color: #007974;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+
   > .actions {
     padding: 8px 0;
     a {
