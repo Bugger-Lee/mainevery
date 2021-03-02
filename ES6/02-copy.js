@@ -90,14 +90,14 @@ console.log(my,my2,my3)
 
 /**
  * JSON.stringfy
- * 含有 undefined  Symbol值 的键会消失
+ * 含有 function undefined  Symbol值 的键会消失
  * NaN Infinity -Infinity 会转成 null
  * 无法拷贝对象的不可枚举属性
  * 无法拷贝对象的原型链
  * Date 转换为字符串
  * Reg 会变成空对象
  */
-let obj11 = {a: {b: 1, c: null, d: undefined, n: NaN, f() {return 5 }, data: new Date(0), reg: /123/}}
+let obj11 = {a: {b: 1, c: null, d: undefined, n: NaN, f: function() {return 5 }, data: new Date(0), reg: /123/}}
 let str = JSON.stringify(obj11)
 let obj2 = JSON.parse(str)
 obj11.a.b = 2
