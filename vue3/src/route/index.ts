@@ -1,66 +1,59 @@
 import { createWebHashHistory, createRouter } from 'vue-router'
-import Home from '../views/Home.vue'
-import Doc from '../views/Doc.vue'
-import Switch from '../components/Switch.vue'
-import Button from '../components/Button.vue'
-import Dialog from '../components/Dialog.vue'
-import Tabs from '../components/Tabs.vue'
+import credit from '../views/Bank/credit.vue'
+import credit1 from '../views/Bank/credit1.vue'
+import credit2 from '../views/Bank/credit2.vue'
+import credit3 from '../views/Bank/credit3.vue'
+import credit4 from '../views/Bank/credit4.vue'
+import anwl from './modules/anwl'
 
-import MarkDown from '../components/MarkDown.vue'
-import intro from '../markdown/intro.md'
-import install from '../markdown/install.md'
-import getStarted from '../markdown/get-started.md'
-import { h } from 'vue'
-const md = (string, key) => h(MarkDown, { content: string, key })
+
 
 const history = createWebHashHistory()
+const routesList = [
+  {
+    path: '/credit',
+    component: credit,
+    meta: {
+      title: '线上支付笔笔返'
+    }
+  },
+  {
+    path: '/credit1',
+    component: credit1,
+    meta: {
+      title: '立即还款'
+    }
+  },
+  {
+    path: '/credit2',
+    component: credit2,
+    meta: {
+      title: '额度管理'
+    }
+  },
+  {
+    path: '/credit3',
+    component: credit3,
+    meta: {
+      title: '爱心贷'
+    }
+  },
+  {
+    path: '/credit4',
+    component: credit4,
+    meta: {
+      title: '签约绑定账户'
+    }
+  },
+]
+routesList.push(...anwl)
+console.log(routesList)
 const router = createRouter({
   history,
-  routes: [
-    {
-      path: '/',
-      component: Home
-    },
-    {
-      path: '/doc',
-      component: Doc,
-      children: [
-        {
-          path: '',
-          redirect: 'doc/intro'
-        },
-        {
-          path: 'intro',
-          component: md(intro, '1')
-        },
-        {
-          path: 'install',
-          component: md(install, '2')
-        },
-        {
-          path: 'get-started',
-          component: md(getStarted, '3')
-        },
-        {
-          path: 'switch',
-          component: Switch
-        },
-        {
-          path: 'button',
-          component: Button
-        },
-        {
-          path: 'dialog',
-          component: Dialog
-        },
-        {
-          path: 'tabs',
-          component: Tabs
-        },
-
-      ]
-    }
-  ]
+  routes: routesList
 })
-
+router.beforeEach((to, from, next) => {
+  window.document.title = to.meta.title == undefined?'默认标题':to.meta.title
+  next();
+})
 export default router
