@@ -1,3 +1,4 @@
+"use strict";
 // 布尔 boolean
 var isDone = true;
 // 数字 number
@@ -5,6 +6,9 @@ var num = 5;
 // 字符串 string
 var str = 'str';
 var str2 = "name " + num;
+// symbol
+var sym = Symbol();
+sym = Symbol(1);
 // 数组 array
 var arr1 = [1, 8, 6];
 var arr2 = ['1'];

@@ -8,6 +8,9 @@ let num: number = 5
 let str: string = 'str'
 let str2: string = `name ${num}`
 
+// symbol
+let sym: symbol = Symbol()
+sym = Symbol(1)
 // 数组 array
 let arr1: number[] = [1, 8, 6]
 let arr2: string[] = ['1']
