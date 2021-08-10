@@ -34,6 +34,39 @@ var vio = undefined;
 var err = function (msg) {
     throw Error(msg);
 };
-obj({});
-obj(function () { });
+// obj({})
+// obj(() => {})
 // obj(1)
+// 类型断言
+var arrNum = [1, 2, 3];
+// const arrNum3: number = arrNum.find(i => i > 2) as number
+// const arrNum4: number = <number>arrNum.find(i => i > 2)
+// 常量断言
+var strs = 'str';
+// 类型推断
+var nums = 1;
+// nums = '2'
+var x1 = '2';
+// let x2: number = x1
+var x2 = x1;
+var fn1 = function (a, b) {
+    if (b === void 0) { b = 2; }
+    return a + b;
+};
+var f1 = fn1(1, 2);
+var add = function (a, b) {
+    return a + b;
+};
+var add1 = add(1, 2);
+// const add2 = add(1, '2')
+// 字面量类型
+var speStr = 'this is string';
+// let speStr1: 'this is string' = '1'
+var speNumber = 1;
+// let speNumber1: 1 = 2
+var speBool = true;
+// let speBool1: true = false
+// let const类型注解
+var spestr2 = 'this is str';
+var spestr3 = 'this is str';
+console.log(typeof spestr2, typeof spestr3);

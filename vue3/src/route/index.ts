@@ -5,6 +5,7 @@ import credit2 from '../views/Bank/credit2.vue'
 import credit3 from '../views/Bank/credit3.vue'
 import credit4 from '../views/Bank/credit4.vue'
 import anwl from './modules/anwl'
+import bhw from './modules/bhw'
 
 
 
@@ -46,7 +47,7 @@ const routesList = [
     }
   },
 ]
-routesList.push(...anwl)
+routesList.push(...anwl.concat(bhw))
 console.log(routesList)
 const router = createRouter({
   history,

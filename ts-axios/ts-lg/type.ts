@@ -50,6 +50,48 @@ const err = (msg: string): never => {
 
 // object
 declare function obj(o: object| null): any;
-obj({})
-obj(() => {})
+// obj({})
+// obj(() => {})
 // obj(1)
+
+// 类型断言
+let arrNum: number[] = [1, 2, 3]
+// const arrNum3: number = arrNum.find(i => i > 2) as number
+// const arrNum4: number = <number>arrNum.find(i => i > 2)
+
+// 常量断言
+let strs = 'str' as const
+
+// 类型推断
+let nums = 1
+// nums = '2'
+let x1 = '2'
+// let x2: number = x1
+let x2: string = x1
+
+const fn1 = (a: number, b = 2) => {
+  return a + b
+}
+const f1 = fn1(1, 2)
+// const f2 = fn1(1, '2')
+
+// 上下文推断
+type adder = (a: number, b: number) => number
+const add: adder = (a, b) => {
+  return a + b
+}
+const add1 = add(1, 2)
+// const add2 = add(1, '2')
+
+// 字面量类型
+let speStr: 'this is string' = 'this is string'
+// let speStr1: 'this is string' = '1'
+let speNumber: 1 = 1
+// let speNumber1: 1 = 2
+let speBool: true = true
+// let speBool1: true = false
+
+// let const类型注解
+let spestr2 = 'this is str'
+const spestr3 = 'this is str'
+console.log(typeof spestr2, typeof spestr3)
