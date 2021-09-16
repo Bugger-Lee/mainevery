@@ -3,7 +3,7 @@
     <Topnav />
     <div class="banner">
       <div>
-        <img src="../assets/moon.png" alt="">
+        <img src="../assets/moon.png" alt="" />
       </div>
       <h1>Moon UI</h1>
       <h2>基于Vue3.0的移动端组件库</h2>
@@ -26,7 +26,7 @@
         <svg>
           <use xlink:href="#icon-ts"></use>
         </svg>
-        <h3>基于 TypeScript </h3>
+        <h3>基于 TypeScript</h3>
         <p>源代码采用 TypeScript 书写（非严格检查）</p>
       </li>
       <li>
@@ -65,16 +65,16 @@ $color: #007974;
   padding: 0 16px;
   @media (min-width: 800px) {
     width: 800px;
-    >ul {
-      >li {
+    > ul {
+      > li {
         width: 50%;
       }
     }
   }
   @media (min-width: 1200px) {
     width: 1200px;
-    >ul {
-      >li {
+    > ul {
+      > li {
         width: 33.3333%;
       }
     }
