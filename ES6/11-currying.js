@@ -1,9 +1,16 @@
+/*
+ * @Author: lijian
+ * @since: 2021-07-21 18:32:06
+ * @lastTime: 2021-10-25 11:09:54
+ * @LastAuthor: lijian
+ * @message:
+ */
 function sum(arg) {
   let args = Array.prototype.slice.call(arg)
   console.log(args)
 }
 
-console.log(sum([1,5,6,9,7]))
+console.log(sum([1, 5, 6, 9, 7]))
 // 将使用多个参数的函数 转换成一系列使用一个参数的函数
 // 减少代码冗余 增加可读性
 
@@ -14,11 +21,43 @@ var Per = new Object()
 
 var c = 10
 function b(a) {
-  console.log('1',a)
+  console.log('1', a)
   var a = c
   console.log(a)
   function a() {
-    console.log('2',a)
+    console.log('2', a)
   }
 }
 b(3)
+
+function curry(fn, args) {
+  var length = fn.length
+  args = args || []
+  return function () {
+    var newArgs = args.concat(Array.prototype.slice.call(arguments))
+    if (newArgs.length < length) {
+      return curry.call(this, fn, newArgs)
+    } else {
+      return fn.apply(this, newArgs)
+    }
+  }
+}
+
+function sum() {
+  var newArg = [].concat(Array.prototype.slice.call(arguments))
+  console.log(newArg)
+  let add = newArg.reduce((a, b) => {
+    return a + b
+  })
+  return add
+}
+const fn = curry(sum)
+console.log(fn(1)(2)(3))
+
+const curry =
+  (fn, arr = []) =>
+  (...args) =>
+    ((arg) => (arg.length === fn.length ? fn(...arg) : curry(fn, arg)))([
+      ...arr,
+      ...args
+    ])
