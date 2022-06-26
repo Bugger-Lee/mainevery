@@ -1,3 +1,10 @@
+/*
+ * @Author: lijian
+ * @since: 2021-07-21 17:37:11
+ * @lastTime: 2022-06-26 14:41:34
+ * @LastAuthor: lijian
+ * @message:
+ */
 import { createWebHashHistory, createRouter } from 'vue-router'
 import credit from '../views/Bank/credit.vue'
 import credit1 from '../views/Bank/credit1.vue'
@@ -8,6 +15,9 @@ import anwl from './modules/anwl'
 import bhw from './modules/bhw'
 import msyh from './modules/msyh'
 import rcs from './modules/rcs'
+import common from './modules/common'
+import hm from './modules/hm'
+import hrzq from './modules/hrzq'
 
 const history = createWebHashHistory()
 const routesList = [
@@ -47,7 +57,7 @@ const routesList = [
     }
   }
 ]
-routesList.push(...anwl, ...bhw, ...msyh, ...rcs)
+routesList.push(...anwl, ...bhw, ...msyh, ...rcs, ...common, ...hm, ...hrzq)
 console.log(routesList)
 const router = createRouter({
   history,
