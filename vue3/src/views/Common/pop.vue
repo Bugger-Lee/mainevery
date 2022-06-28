@@ -1,7 +1,7 @@
 <!--
  * @Author: lijian
  * @since: 2022-06-26 16:35:48
- * @lastTime: 2022-06-26 17:41:51
+ * @lastTime: 2022-06-28 15:46:08
  * @LastAuthor: lijian
  * @message: 
 -->
@@ -12,7 +12,7 @@
         <div class="title">请输入支付密码<span @click="close">+</span></div>
         <div class="input-list">
           <div v-for="i in 6" :key="i" class="li">
-            <span v-if="num > i"></span>
+            <span v-if="num > i - 1"></span>
           </div>
         </div>
         <div class="input-num">
@@ -43,47 +43,31 @@
 </template>
 
 <script lang="ts">
-import { ref } from '@vue/reactivity'
+import { ref } from 'vue'
 export default {
-  // setup() {
-  //   const num = ref(0)
-  //   const addNum = () => {
-  //     console.log(111, num.value)
-  //     if (num.value < 6) {
-  //       num.value = num.value + 1
-  //     }
-  //   }
-  //   const delNum = () => {
-  //     console.log(111, num.value)
-  //     if (num.value > 0) {
-  //       num.value = num.value - 1
-  //     }
-  //   }
-  //   return { num, addNum, delNum }
-  // },
-  data() {
-    return {
-      num: 1
-    }
-  },
-  methods: {
-    delNum() {
-      if (this.num > 1) {
-        this.num = this.num - 1
-      }
-    },
-    addNum() {
-      console.log(111, this.num)
-      if (this.num < 7) {
-        this.num = this.num + 1
-        if (this.num === 7) {
-          this.$emit('close', true)
+  emits: ['close'],
+  setup(props, content) {
+    const num = ref(0)
+    const addNum = () => {
+      console.log(111, num.value)
+      if (num.value < 6) {
+        num.value = num.value + 1
+        if (num.value === 6) {
+          console.log('111')
+          content.emit('close', true)
         }
       }
-    },
-    close() {
-      this.$emit('close', false)
     }
+    const delNum = () => {
+      console.log(111, num.value)
+      if (num.value > 0) {
+        num.value = num.value - 1
+      }
+    }
+    const close = () => {
+      content.emit('close', false)
+    }
+    return { num, addNum, delNum, close }
   }
 }
 </script>

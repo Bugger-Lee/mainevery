@@ -1,7 +1,7 @@
 <!--
  * @Author: lijian
  * @since: 2022-06-26 10:13:50
- * @lastTime: 2022-06-26 17:50:09
+ * @lastTime: 2022-06-28 15:48:29
  * @LastAuthor: lijian
  * @message: 
 -->
@@ -21,33 +21,28 @@
 </template>
 
 <script lang="ts">
-import { ref, toRaw } from '@vue/reactivity'
-import { useRouter } from 'vue-router'
+import { ref, toRaw } from 'vue'
+import { useRoute, useRouter } from 'vue-router'
 import pop from './pop.vue'
 export default {
   name: 'doc',
   components: { pop },
   setup() {
     const route = toRaw(useRouter()).currentRoute
+    const goRouter = useRouter()
     const { money } = toRaw(route.value.query)
-    return { money }
-  },
-  data() {
-    return {
-      show: false
-    }
-  },
-  methods: {
-    close(e) {
+    const show = ref<Boolean>(false)
+    const close = (e) => {
       if (e === '1') {
-        this.show = true
+        show.value = true
       } else {
-        this.show = false
+        show.value = false
         if (e === true) {
-          this.$router.push('/pay-success')
+          goRouter.push('/pay-success')
         }
       }
     }
+    return { money, show, close }
   }
 }
 </script>
