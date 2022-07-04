@@ -1,7 +1,7 @@
 /*
  * @Author: lijian
  * @since: 2022-06-23 15:18:34
- * @lastTime: 2022-06-23 16:43:37
+ * @lastTime: 2022-06-30 18:25:03
  * @LastAuthor: lijian
  * @message:
  */
@@ -78,3 +78,24 @@ const inorderTraversalRight = (root, array = []) => {
   return array
 }
 console.log(inorderTraversalRight(tree))
+
+const inorderTraversal = (root) => {
+  const result = []
+  const stack = []
+  let current = root
+  while (current || stack.length > 0) {
+    while (current) {
+      stack.push(current)
+      console.log(current, stack)
+      current = current.left
+    }
+    current = stack.pop()
+    result.push(current.val)
+    current = current.right
+  }
+  return result
+}
+console.log(inorderTraversal(tree))
+
+const arr = [1, 2, 3]
+console.log(arr.push(4), arr)
