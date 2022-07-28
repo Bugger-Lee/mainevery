@@ -1,9 +1,16 @@
+<!--
+ * @Author: lijian
+ * @since: 2022-07-18 14:55:01
+ * @lastTime: 2022-07-26 17:16:55
+ * @LastAuthor: lijian
+ * @message: 
+-->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue';
 
-defineProps<{ msg: string }>()
+defineProps<{ msg: string }>();
 
-const count = ref(0)
+const count = ref(0);
 </script>
 
 <template>
