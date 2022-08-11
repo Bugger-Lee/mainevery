@@ -1,7 +1,7 @@
 <!--
  * @Author: lijian
  * @since: 2022-07-28 16:33:43
- * @lastTime: 2022-08-03 17:57:38
+ * @lastTime: 2022-08-04 15:21:29
  * @LastAuthor: lijian
  * @message: 
 -->
@@ -9,6 +9,7 @@
 import { FormRules } from 'element-plus'
 import { defineComponent, h, reactive, ref, render } from 'vue'
 import { MyIcons, useRenderIcons } from '@/components/ReIcon/index'
+import ReImageVerify from '@/components/ReImageVerify/index.vue'
 const form = reactive({
   name: '',
   password: '',
@@ -62,7 +63,7 @@ const rules = reactive<FormRules>({
       <el-form-item prop="code">
         <el-input v-model="form.code" size="large">
           <template #append>
-            <div>111</div>
+            <ReImageVerify />
           </template>
         </el-input>
       </el-form-item>
@@ -90,5 +91,8 @@ const rules = reactive<FormRules>({
   h3 {
     padding-top: 20px;
   }
+}
+::v-deep .el-input-group__append {
+  padding: 0;
 }
 </style>
