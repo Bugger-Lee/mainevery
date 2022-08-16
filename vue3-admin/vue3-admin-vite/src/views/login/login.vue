@@ -1,7 +1,7 @@
 <!--
  * @Author: lijian
  * @since: 2022-07-28 16:33:43
- * @lastTime: 2022-08-04 15:21:29
+ * @lastTime: 2022-08-16 17:25:58
  * @LastAuthor: lijian
  * @message: 
 -->
@@ -20,6 +20,7 @@ const rules = reactive<FormRules>({
   password: [{ required: true, message: '请输入密码', trigger: 'blur' }],
   code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
 })
+const imgCode = ref('')
 </script>
 
 <template>
@@ -63,12 +64,22 @@ const rules = reactive<FormRules>({
       <el-form-item prop="code">
         <el-input v-model="form.code" size="large">
           <template #append>
-            <ReImageVerify />
+            <ReImageVerify v-model:code="imgCode" />
           </template>
         </el-input>
       </el-form-item>
+      <el-form-item>
+        <el-button style="width: 100%; margin-top: 20px" type="primary"
+          >登录</el-button
+        >
+      </el-form-item>
     </el-form>
-    <MyIcons icon="ep:sunny" color="red" width="24px" height="24px"></MyIcons>
+    <MyIcons
+      icon="ep:pear"
+      color="#ccec57"
+      width="24px"
+      height="24px"
+    ></MyIcons>
   </div>
 </template>
 
