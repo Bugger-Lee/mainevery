@@ -1,7 +1,7 @@
 /*
  * @Author: lijian
  * @since: 2021-07-21 17:37:11
- * @lastTime: 2022-06-26 14:41:34
+ * @lastTime: 2022-09-14 17:37:02
  * @LastAuthor: lijian
  * @message:
  */
@@ -18,6 +18,7 @@ import rcs from './modules/rcs'
 import common from './modules/common'
 import hm from './modules/hm'
 import hrzq from './modules/hrzq'
+import dfhk from './modules/dfhk'
 
 const history = createWebHashHistory()
 const routesList = [
@@ -57,7 +58,16 @@ const routesList = [
     }
   }
 ]
-routesList.push(...anwl, ...bhw, ...msyh, ...rcs, ...common, ...hm, ...hrzq)
+routesList.push(
+  ...anwl,
+  ...bhw,
+  ...msyh,
+  ...rcs,
+  ...common,
+  ...hm,
+  ...hrzq,
+  ...dfhk
+)
 console.log(routesList)
 const router = createRouter({
   history,

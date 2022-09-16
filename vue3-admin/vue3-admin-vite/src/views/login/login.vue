@@ -1,15 +1,16 @@
 <!--
  * @Author: lijian
  * @since: 2022-07-28 16:33:43
- * @lastTime: 2022-08-16 17:25:58
+ * @lastTime: 2022-08-18 10:15:44
  * @LastAuthor: lijian
  * @message: 
 -->
 <script setup lang="ts">
-import { FormRules } from 'element-plus'
+import { FormInstance, FormRules } from 'element-plus'
 import { defineComponent, h, reactive, ref, render } from 'vue'
 import { MyIcons, useRenderIcons } from '@/components/ReIcon/index'
 import ReImageVerify from '@/components/ReImageVerify/index.vue'
+import { useRouter } from 'vue-router'
 const form = reactive({
   name: '',
   password: '',
@@ -21,6 +22,27 @@ const rules = reactive<FormRules>({
   code: [{ required: true, message: '请输入验证码', trigger: 'blur' }]
 })
 const imgCode = ref('')
+const ruleFormRef = ref<FormInstance>()
+const loading = ref(false)
+const route = useRouter()
+const onLogin = async (formEl: FormInstance | undefined) => {
+  console.log({ ...formEl })
+  if (!formEl) return
+  loading.value = true
+  await formEl.validate((valid, fields) => {
+    console.log(valid)
+    if (valid) {
+      console.log(form)
+      if (form.code === imgCode.value) {
+        console.log(111)
+        route.push('/home')
+      }
+    }
+    setTimeout(() => {
+      loading.value = false
+    }, 2000)
+  })
+}
 </script>
 
 <template>
@@ -32,6 +54,7 @@ const imgCode = ref('')
       :rules="rules"
       :model="form"
       style="padding: 0 20px"
+      @keyup.enter="onLogin(ruleFormRef)"
     >
       <el-form-item prop="name">
         <el-input
@@ -69,7 +92,11 @@ const imgCode = ref('')
         </el-input>
       </el-form-item>
       <el-form-item>
-        <el-button style="width: 100%; margin-top: 20px" type="primary"
+        <el-button
+          style="width: 100%; margin-top: 20px"
+          type="primary"
+          @click="onLogin(ruleFormRef)"
+          :loading="loading"
           >登录</el-button
         >
       </el-form-item>
@@ -96,7 +123,7 @@ const imgCode = ref('')
 }
 .login-boxs {
   width: 350px;
-  height: 400px;
+  height: 360px;
   background: #fff;
   border-radius: 5px;
   h3 {
